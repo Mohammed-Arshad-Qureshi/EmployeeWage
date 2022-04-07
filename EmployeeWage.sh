@@ -6,7 +6,8 @@ PerHr=20;
 TotalSalary=0;
 NoOfWorkingDays=20;
 Present=0;
-Max_Hrs_In_Month=100;
+Max_Hrs_In_Month=50;
+declare -a dailywage;
 
 totalEmpHrs=0;
 TotalWorkingDays=0;
@@ -28,10 +29,8 @@ do
         ((TotalWorkingDays++));
 	IsWorkingHrs="$( getWorkingHrs $((RANDOM%3)) )"
 	totalEmpHrs=$(($totalEmpHrs+$IsWorkingHrs));
+	dailyWage[$TotalWorkingDays]=$(($IsWorkingHrs*$PerHr));
 done
 SalaryRegardingHrs=$(($totalEmpHrs*$PerHr));
-echo Number_Of_Days_Present ":" $TotalWorkingDays;
-echo "Number_of Working Hrs : " $totalEmpHrs;
-echo "Salary Regarding Working hrs : " $SalaryRegardingHrs;
-
-
+echo Number_of Working Hrs  $totalEmpHrs;
+echo daily wages ${dailyWage[@]};
