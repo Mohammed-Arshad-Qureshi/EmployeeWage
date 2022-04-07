@@ -1,10 +1,14 @@
 #!/bin/bash -x
-IsPresent=1;
+IsFullTime=1;
 IsRandomCheck=$((RANDOM%2));
-if [ $IsPresent -eq $IsRandomCheck ];
+IsWorkingHrs=0;
+PerHr=20;
+if [ $IsFullTime -eq $IsRandomCheck ];
 then
-        echo Present
+        IsWorkingHrs=8;
 else
-        echo Absent
+        IsWorkingHrs=0;
 fi
+Salary=$(($IsWorkingHrs*$PerHr));
+echo $Salary;
 
