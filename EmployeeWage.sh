@@ -7,7 +7,7 @@ TotalSalary=0;
 NoOfWorkingDays=20;
 Present=0;
 Max_Hrs_In_Month=50;
-declare -a dailywage;
+declare -A dailywage;
 
 totalEmpHrs=0;
 TotalWorkingDays=0;
