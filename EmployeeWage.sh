@@ -6,8 +6,14 @@ PerHr=20;
 TotalSalary=0;
 NoOfWorkingDays=20;
 Present=0;
-for (( day=1; day<=$NoOfWorkingDays; day++ ));
+Max_Hrs_In_Month=100;
+
+totalEmpHrs=0;
+TotalWorkingDays=0;
+
+while [[ $totalEmpHrs -lt $Max_Hrs_In_Month && $TotalWorkingDays -lt $NoOfWorkingDays ]]
 do
+        ((TotalWorkingDays++));
         IsRandomCheck=$((RANDOM%3));
 case $IsRandomCheck in
         $IsFullTime)
@@ -19,9 +25,11 @@ case $IsRandomCheck in
         *)
                 IsWorkingHrs=0;;
 esac
-Salary=$(($IsWorkingHrs*$PerHr))
-TotalSalary=$(($Salary+$TotalSalary));
+totalEmpHrs=$(($totalEmpHrs+$IsWorkingHrs));
 done
-echo Total_Salary ":" $TotalSalary;
-echo Number_Of_Days_Present ":" $Present;
+SalaryRegardingHrs=$(($totalEmpHrs*$PerHr));
+echo Number_Of_Days_Present ":" $TotalWorkingDays;
+echo "Number_of Working Hrs : " $totalEmpHrs;
+echo "Salary Regarding Working hrs : " $SalaryRegardingHrs;
+
 
